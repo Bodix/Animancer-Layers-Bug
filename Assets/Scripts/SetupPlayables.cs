@@ -29,8 +29,10 @@ public class SetupPlayables : MonoBehaviour
         AnimatorControllerPlayable controllerPlayable =
             AnimatorControllerPlayable.Create(playableGraph, _animator.runtimeAnimatorController);
         AnimationClipPlayable clipPlayable = AnimationClipPlayable.Create(playableGraph, _clip);
+        // IPlayable posePlayable = ReflectionUtility.CreateAnimationPosePlayable(playableGraph);
         playableGraph.Connect(controllerPlayable, 0, _mixerPlayable, 0);
         playableGraph.Connect(clipPlayable, 0, _mixerPlayable, 1);
+        // playableGraph.Connect(posePlayable, 0, _mixerPlayable, 2);
         
         playableGraph.Play();
     }
